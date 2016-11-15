@@ -6,11 +6,11 @@ Mis APIS
 Nos permite agilizar la lectura, escritura, modificación del SharedPrefered de Android.
 
 ### Caracteristicas:
-* [Crear]()
-* [Leer]()
-* [Escribir]()
-* [Copiar]()
-* [Eliminar]()
+* [Crear](https://github.com/woulf-alpha/APIS/blob/master/README.md#constructor)
+* [Leer](https://github.com/woulf-alpha/APIS/blob/master/README.md#leer)
+* [Escribir](https://github.com/woulf-alpha/APIS/blob/master/README.md#escribir)
+* [Copiar](https://github.com/woulf-alpha/APIS/blob/master/README.md#copiar)
+* [Eliminar](https://github.com/woulf-alpha/APIS/blob/master/README.md#eliminar)
 
 
 ##### CONSTRUCTOR
