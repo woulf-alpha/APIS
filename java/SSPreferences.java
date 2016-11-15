@@ -3,8 +3,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 
-import net.azarquiel.note2016.modelo.Nota;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
