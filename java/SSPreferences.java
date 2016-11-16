@@ -1,4 +1,3 @@
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
@@ -32,7 +31,6 @@ public class SSPreferences {
             f_out = getList_files().get(0);
         } else {
             f_out = "data";
-            write("0","test");
         }
         this.editor =  ctxt.getSharedPreferences(f_out, Context.MODE_PRIVATE).edit();
     }
@@ -82,19 +80,12 @@ public class SSPreferences {
     }
 
     public void copy(String f_in, String f_out) {
-
-        SharedPreferences.Editor editor = ctxt.getSharedPreferences(f_out, Context.MODE_PRIVATE).edit();
-        editor.putString("0", "KKKKK");
-        editor.commit();
-
-        String ruta = "/data/data/" + ctxt.getPackageName()
-                + "/shared_prefs/"+ f_out +".xml";
-
+        
         InputStream in = null;
         OutputStream out = null;
         try {
             in = ctxt.getAssets().open(f_in);
-            out = new FileOutputStream(ruta);
+            out = new FileOutputStream(Ruta +"/"+f_out+".xml");
             copyFile(in, out);
             in.close();
             out.close();
