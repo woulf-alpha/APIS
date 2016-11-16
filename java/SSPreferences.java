@@ -1,11 +1,17 @@
+
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Base64;
 import android.util.Log;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Map;
@@ -62,6 +68,32 @@ public class SSPreferences {
         editor.putString(key, value);
         editor.commit();
     }
+
+    public void writeObject(Object i, String key){
+        try {
+            ByteArrayOutputStream bo = new ByteArrayOutputStream();
+            ObjectOutputStream so = new ObjectOutputStream(bo);
+            so.writeObject(i);
+            so.flush();
+            editor.putString(key, Base64.encodeToString(bo.toByteArray(), Base64.DEFAULT));
+            editor.commit();
+        } catch (Exception e) {
+        }
+    }
+
+    public void writeObject(Object i, String f_out, String key){
+        editor = ctxt.getSharedPreferences(f_out, Context.MODE_PRIVATE).edit();
+        try {
+            ByteArrayOutputStream bo = new ByteArrayOutputStream();
+            ObjectOutputStream so = new ObjectOutputStream(bo);
+            so.writeObject(i);
+            so.flush();
+            editor.putString(key, Base64.encodeToString(bo.toByteArray(), Base64.DEFAULT));
+            editor.commit();
+        } catch (Exception e) {
+        }
+    }
+
     // ELIMINAR DATOS
     public  void remove(String key){
         editor.remove(key);
@@ -80,7 +112,7 @@ public class SSPreferences {
     }
 
     public void copy(String f_in, String f_out) {
-        
+
         InputStream in = null;
         OutputStream out = null;
         try {
@@ -122,5 +154,18 @@ public class SSPreferences {
 
     public ArrayList<String> getList_files() {
         return List_files;
+    }
+
+    public Object StringtoObject(String s){
+        try {
+            ByteArrayInputStream bis = new ByteArrayInputStream(Base64.decode(s, Base64.DEFAULT));
+            ObjectInputStream ois = new ObjectInputStream(bis);
+            return  ois.readObject();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
