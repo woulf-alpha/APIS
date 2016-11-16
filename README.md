@@ -11,8 +11,8 @@ Nos permite agilizar la lectura, escritura, modificación del SharedPrefered de 
 * [Escribir](https://github.com/woulf-alpha/APIS/blob/master/README.md#escribir)
 * [Copiar](https://github.com/woulf-alpha/APIS/blob/master/README.md#copiar)
 * [Eliminar](https://github.com/woulf-alpha/APIS/blob/master/README.md#eliminar)
-* NEW! [WriteObject]()
-* NEW! [StringToObject]()
+* NEW! [WriteObject](https://github.com/woulf-alpha/APIS/blob/master/README.md#escribir-objeto)
+* NEW! [StringToObject](https://github.com/woulf-alpha/APIS/blob/master/README.md#leer-objeto)
 
 ##### CONSTRUCTOR
 ___
