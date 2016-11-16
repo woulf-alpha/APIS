@@ -11,7 +11,8 @@ Nos permite agilizar la lectura, escritura, modificación del SharedPrefered de 
 * [Escribir](https://github.com/woulf-alpha/APIS/blob/master/README.md#escribir)
 * [Copiar](https://github.com/woulf-alpha/APIS/blob/master/README.md#copiar)
 * [Eliminar](https://github.com/woulf-alpha/APIS/blob/master/README.md#eliminar)
-
+* NEW! [WriteObject]()
+* NEW! [StringToObject]()
 
 ##### CONSTRUCTOR
 ___
@@ -64,4 +65,23 @@ ___
   ss.remove(String f_out, String key)
     ss.remove("Saludos", "0")
   ss.removeAll();
+```
+##### ESCRIBIR OBJETO
+___
+
+``` java
+  ss.writeObject(Object n,String key)
+    ss.writeObject(n,"0");
+  ss.writeObject(Object n,String f_out, String key)
+    ss.writeObject(n,"Saludos","1");
+```
+
+##### LEER OBJETO
+___
+
+Para poder leer el objeto necesitamos obtener el getValue() una vez lo obtenemos, lo pasaremos a String con el metodo getValue().toString(). Después llamaremos al metodo para que nos pase de String a Objeto. 
+
+``` java
+ // El objeto que metimos era de tipo Nota.
+ Nota n = (Nota) ss.StringtoObject(entry.getValue().toString());
 ```
