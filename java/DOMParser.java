@@ -1,9 +1,11 @@
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -20,11 +22,11 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 
-public class DOMParserWeb {
+public class DOMParserWeb extends Exception {
 	private InputSource is;
 	private DocumentBuilder builder;
 
-	public DOMParserWeb(URL strUrl) {
+	public DOMParserWeb(URL strUrl){
 		// abrimos la pagina y obtenemos nuestro canal is para luego parsear
 		URL url = null;
 
@@ -139,5 +141,21 @@ public class DOMParserWeb {
 			datos.put(attr.getNodeName(), attr.getNodeValue());
 		}
 		return datos;
+	}
+	
+	public ArrayList<Element> getItems(String padre, String item){
+		ArrayList<Element> listaElement = new ArrayList<>();
+		Document doc = getDocumento();
+
+		Element element = (Element) doc.getElementsByTagName(padre).item(0);
+		
+		NodeList elements = element.getElementsByTagName(item);
+		
+		for(int i = 0; i < elements.getLength(); i++){
+			Element e = (Element) elements.item(i);
+			listaElement.add(e);
+		}
+		
+		return listaElement; 
 	}
 }
